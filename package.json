@@ -1,0 +1,41 @@
+{
+  "name": "boostrap-admin-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:lint": "stylelint --config config/.stylelintrc --syntax scss \"scss/**/*.scss\" --cache --cache-location \"config/.stylelintcache/\"",
+    "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/main.scss public/css/style.css",
+    "css:prefix": "postcss --config config/postcss.config.js --replace \"public/css/*.css\" \"public/css/!*.min.css\"",
+    "css:minify": "cleancss --level 1 --source-map --source-map-inline-sources --output public/css/style.min.css public/css/style.css",
+    "css:watch": "watch 'npm run css:build' scss",
+    "css:build": "npm run css:lint && npm run css:compile && npm run css:prefix && npm run css:minify",
+    "app:watch": "nodemon app.js",
+    "dev": "npm run css:watch & npm run app:watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "fontawesome": "^5.6.3",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.2",
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.6",
+    "postcss-cli": "^8.3.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-twbs-bootstrap": "^2.1.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
+    "watch": "^1.0.2"
+  }
+}
