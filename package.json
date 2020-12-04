@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css:lint": "stylelint --config config/.stylelintrc --syntax scss \"scss/**/*.scss\" --cache --cache-location \"config/.stylelintcache/\"",
+    "css:lint": "stylelint --config config/.stylelintrc --syntax scss \"scss/**/*.scss\" --fix --cache --cache-location \"config/.stylelintcache/\"",
     "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/main.scss public/css/style.css",
     "css:prefix": "postcss --config config/postcss.config.js --replace \"public/css/*.css\" \"public/css/!*.min.css\"",
     "css:minify": "cleancss --level 1 --source-map --source-map-inline-sources --output public/css/style.min.css public/css/style.css",
@@ -21,7 +21,6 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "fontawesome": "^5.6.3",
     "jquery": "^3.5.1"
   },
   "devDependencies": {
